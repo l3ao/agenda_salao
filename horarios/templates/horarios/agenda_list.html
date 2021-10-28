@@ -1,0 +1,48 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <h1>Agenda do dia</h1>
+    <form>
+        <div class="input-group mb-3">
+            <input type="date" class="form-control" name="data_busca" value="{{data}}">
+            <button class="btn btn-outline-secondary" type="submit">Filtrar</button>
+        </div>
+    </form>
+    <table class="table">
+        <thead>
+            <th>Horário</th>
+            <th>Cliente</th>
+        </thead>
+        <tbody>
+        {% for agenda in horarios %}
+        <tr>
+            <td><a href="{% url 'update-agenda' agenda.id %}">{{agenda.horario}}</a></td>
+            <td>{{agenda.cliente}}</td>
+        </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+    <nav class="navbar fixed-bottom navbar-light bg-light">
+        <div class="container-fluid">
+            <a href="#" class="btn btn-danger">Voltar menu</a>
+            <a href="{% url 'create-agenda' %}" class="btn btn-primary">Novo horário</a>
+        </div>
+    </nav>
+    {% if horarios.number %}
+    <div class="pagination">
+        <span class="step-links" style="margin-left: auto; margin-right: auto;">
+            {% if horarios.has_previous %}
+            <a href="?page={{ horarios.previous_page_number }}" class="btn btn-outline-primary btn-sm">Anterior</a>
+            {% endif %}
+    
+            <span class="current">
+                Pagina {{ horarios.number }} de {{ horarios.paginator.num_pages }}.
+            </span>
+            
+            {% if horarios.has_next %}
+            <a href="?page={{ horarios.next_page_number }}" class="btn btn-outline-primary btn-sm">Próxima</a>
+            {% endif %}
+        </span>
+    </div>
+    {% endif %}
+{% endblock content %}

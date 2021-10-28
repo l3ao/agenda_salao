@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+
+{% load bootstrap_tags %}
+
+{% block content %}
+    <h1>Cliente</h1>
+    <form method="POST">
+        {% csrf_token %}
+        {{ form|as_bootstrap }}
+        <nav class="navbar fixed-bottom navbar-light bg-light">
+            <div class="container-fluid">
+                <a class="btn btn-danger" href="{% url 'list-cliente' %}" role="button">Cancelar</a>
+                <button type="submit" class="btn btn-primary">Salvar</button>
+            </div>
+        </nav>
+    </form>
+{% endblock content %}

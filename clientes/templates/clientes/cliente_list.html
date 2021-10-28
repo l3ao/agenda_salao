@@ -1,0 +1,25 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <h1>Clientes</h1>
+    <table class="table">
+        <thead>
+            <th>Nome</th>
+            <th>Telefone</th>
+        </thead>
+        <tbody>
+        {% for cliente in object_list %}
+        <tr>
+            <td><a href="{% url 'update-cliente' cliente.id %}">{{cliente.nome}}</a></td>
+            <td>{{cliente.telefone}}</td>
+        </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+    <nav class="navbar fixed-bottom navbar-light bg-light">
+        <div class="container-fluid">
+            <a href="#" class="btn btn-danger">Voltar menu</a>
+            <a href="{% url 'create-cliente' %}" class="btn btn-primary">Novo cliente</a>
+        </div>
+    </nav>
+{% endblock content %}
