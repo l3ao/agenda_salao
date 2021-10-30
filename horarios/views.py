@@ -35,7 +35,7 @@ class ListAgenda(ListView):
         else:
             data_busca = datetime.now()
         horarios_list = Agenda.objects.filter(dia=data_busca).order_by('horario')
-        paginator = Paginator(horarios_list, 5)
+        paginator = Paginator(horarios_list, 8)
         page = request.GET.get('page')
         horarios = paginator.get_page(page)
         return render(request, 'horarios/agenda_list.html',

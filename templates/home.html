@@ -1,0 +1,18 @@
+{% extends 'base.html' %}
+
+
+{% block content %}
+    <main class="container">
+        <div class="bg-light p-5 rounded mt-3">
+            <h1>Agendamento</h1>
+            <p class="lead">Sistema para agendamento de horários.</p>
+            <a href="{% url 'list-agenda' %}" class="btn btn-primary">Agenda</a>
+            <br>  <br><a href="{% url 'list-cliente' %}" class="btn btn-primary">Clientes</a>
+        </div>
+    </main>
+    <nav class="col-md-9 ms-sm-auto col-lg-10 px-md-4 fixed-bottom navbar navbar-light bg-light">
+        <div class="container-fluid">
+            Todos os direitos reservados ©. 2021
+        </div>
+    </nav>
+{% endblock content %}

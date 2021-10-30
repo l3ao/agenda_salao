@@ -12,19 +12,21 @@
         <thead>
             <th>Horário</th>
             <th>Cliente</th>
+            <th></th>
         </thead>
         <tbody>
         {% for agenda in horarios %}
         <tr>
             <td><a href="{% url 'update-agenda' agenda.id %}">{{agenda.horario}}</a></td>
             <td>{{agenda.cliente}}</td>
+            <td style="text-align: center;"><a href="#"><i class="bi bi-trash"></i></a></td>
         </tr>
         {% endfor %}
         </tbody>
     </table>
     <nav class="navbar fixed-bottom navbar-light bg-light">
         <div class="container-fluid">
-            <a href="#" class="btn btn-danger">Voltar menu</a>
+            <a href="{% url 'home' %}" class="btn btn-danger">Voltar menu</a>
             <a href="{% url 'create-agenda' %}" class="btn btn-primary">Novo horário</a>
         </div>
     </nav>
