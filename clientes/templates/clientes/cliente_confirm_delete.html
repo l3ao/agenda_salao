@@ -1,0 +1,18 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <main class="container">
+        <div class="bg-light p-5 rounded mt-3">
+            <h1>Voce tem certeza que desejar apagar o cliente: {{cliente}}?</h1>
+        </div>
+    </main>
+    <form method="POST">
+        {% csrf_token %}
+        <nav class="navbar fixed-bottom navbar-light bg-light">
+            <div class="container-fluid">
+                <a class="btn btn-danger" href="{% url 'list-cliente' %}" role="button">Cancelar</a>
+                <button type="submit" class="btn btn-primary">Confirmar</button>
+            </div>
+        </nav>
+    </form>
+{% endblock %}

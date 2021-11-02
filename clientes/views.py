@@ -3,7 +3,7 @@ from django.core.paginator import Paginator
 from django.urls import reverse_lazy
 from django.db import models
 from django.shortcuts import redirect, render
-from django.views.generic import DetailView, CreateView, ListView, UpdateView, View
+from django.views.generic import CreateView, ListView, View, DeleteView
 
 from clientes.models import Cliente
 from clientes.forms import ClienteForm
@@ -29,7 +29,7 @@ class ListCliente(ListView):
     def get(self, request, *args, **kwargs):
         super().get(request, *args, **kwargs)
         clientes_list = Cliente.objects.all().order_by('nome')
-        paginator = Paginator(clientes_list, 8)
+        paginator = Paginator(clientes_list, 7)
         page = request.GET.get('page')
         clientes = paginator.get_page(page)
         return render(request, 'clientes/cliente_list.html',
@@ -50,3 +50,8 @@ class UpdateCliente(View):
         cliente.endereco = request.POST['endereco']
         cliente.save()
         return redirect(reverse_lazy('list-cliente'))
+
+
+class DeleteCliente(DeleteView):
+    model = Cliente
+    success_url = reverse_lazy('list-cliente')

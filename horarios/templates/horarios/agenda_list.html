@@ -17,9 +17,23 @@
         <tbody>
         {% for agenda in horarios %}
         <tr>
-            <td><a href="{% url 'update-agenda' agenda.id %}">{{agenda.horario}}</a></td>
-            <td>{{agenda.cliente}}</td>
-            <td style="text-align: center;"><a href="#"><i class="bi bi-trash"></i></a></td>
+            <td>
+                {% if not agenda.status_atendimento %}
+                <a href="{% url 'update-agenda' agenda.id %}">{{agenda.horario}}</a>
+                {% else %}
+                <s><a href="{% url 'update-agenda' agenda.id %}" style="color: red;">{{agenda.horario}}</a></s></td>
+                {% endif %}
+            </td>
+            <td>
+                {% if not agenda.status_atendimento %}
+                {{agenda.cliente}}
+                {% else %}
+                <s style="color: red;">{{agenda.cliente}}</s>
+                {% endif %}
+            </td>
+            <td style="text-align: center;">
+                <a href="{% url 'delete-agenda' agenda.id %}"><i class="bi bi-trash"></i></a>
+            </td>
         </tr>
         {% endfor %}
         </tbody>

@@ -17,4 +17,4 @@ class AgendaForm(forms.ModelForm):
     )
     class Meta:
         model = Agenda
-        fields = ['dia', 'horario', 'cliente']
+        fields = ['dia', 'horario', 'cliente', 'status_atendimento']

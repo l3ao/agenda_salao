@@ -12,7 +12,9 @@
         <tr>
             <td><a href="{% url 'update-cliente' cliente.id %}">{{cliente.nome}}</a></td>
             <td>{{cliente.telefone}}</td>
-            <td style="text-align: center;"><a href="#"><i class="bi bi-trash"></i></a></td>
+            <td style="text-align: center;">
+                <a href="{% url 'delete-cliente' cliente.id %}"><i class="bi bi-trash"></i></a>    
+            </td>
         </tr>
         {% endfor %}
         </tbody>
