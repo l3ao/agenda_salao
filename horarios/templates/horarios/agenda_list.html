@@ -48,7 +48,7 @@
     <div class="pagination">
         <span class="step-links" style="margin-left: auto; margin-right: auto;">
             {% if horarios.has_previous %}
-            <a href="?page={{ horarios.previous_page_number }}" class="btn btn-outline-primary btn-sm">Anterior</a>
+            <a href="?page={{ horarios.previous_page_number }}&data_busca={{ data }}" class="btn btn-outline-primary btn-sm">Anterior</a>
             {% endif %}
     
             <span class="current">
@@ -56,7 +56,7 @@
             </span>
             
             {% if horarios.has_next %}
-            <a href="?page={{ horarios.next_page_number }}" class="btn btn-outline-primary btn-sm">Próxima</a>
+            <a href="?page={{ horarios.next_page_number }}&data_busca={{ data }}" class="btn btn-outline-primary btn-sm">Próxima</a>
             {% endif %}
         </span>
     </div>
