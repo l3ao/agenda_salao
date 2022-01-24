@@ -25,7 +25,7 @@ class ListAgenda(ListView):
         dia = request.GET.get('data_busca', None)
         dia = datetime.strptime(dia, '%Y-%m-%d') if dia else datetime.now()
         horarios_list = Agenda.objects.filter(dia=dia).order_by('status_atendimento', 'horario')
-        paginator = Paginator(horarios_list, 2)
+        paginator = Paginator(horarios_list, 7)
         page = request.GET.get('page')
         horarios = paginator.get_page(page)
         return render(request, 'horarios/agenda_list.html',
