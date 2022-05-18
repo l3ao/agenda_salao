@@ -17,9 +17,16 @@ from django.contrib import admin
 from django.urls import path
 from django.urls.conf import include
 from django.views.generic.base import TemplateView
+from rest_framework import routers
+from clientes.api.viewsets import ClienteViewSet
+
+
+router = routers.DefaultRouter()
+router.register(r'clientes', ClienteViewSet)
 
 
 urlpatterns = [
+    path('api/', include(router.urls)),
     path('admin/', admin.site.urls),
     path('clientes/', include('clientes.urls')),
     path('agenda/', include('horarios.urls')),

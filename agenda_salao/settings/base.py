@@ -41,6 +41,7 @@ INSTALLED_APPS = [
     'horarios',
     'clientes',
     'django_forms_bootstrap',
+    'rest_framework',
 ]
 
 MIDDLEWARE = [
